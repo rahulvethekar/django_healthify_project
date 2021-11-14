@@ -1,0 +1,29 @@
+{% extends 'admin/admin.html' %}
+{% load static %}
+{% block title %}
+    <title>AmbulanceRequest</title>
+
+{% endblock %}
+
+{% block contents %}
+  <link rel="stylesheet" href="{% static 'ambulance/css/ambulance.css' %}">
+<body style="background-image:url({% static 'ambulance/images/request.png' %});">
+
+{% for req in data %}
+<div class="tab">
+<h4>Request Id :- {{req.id}}</h4><br>
+    <h6>Patient Name:- {{req.Patient_Name}}</h6>
+<h6>Patient Age :- {{req.Patient_Age}}</h6>
+<h6>Patient Contact :- {{req.Patient_Contact}}</h6>
+<h6>Location :- {{req.Location}}</h6>
+<h6>Resaon :- {{req.Reason}}</h6>
+    {% if req.Other %}
+<h6>Other :- {{req.Other}}</h6>
+    {% endif %}
+    <a href="{% url 'delete_req' req.id %}"><button class = "btn btn-danger" style="width:100px; height:40px;">Delete</button></a>
+    </div>
+
+<br><br>
+{% endfor %}
+</body>
+{% endblock %}

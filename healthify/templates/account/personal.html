@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+{% load crispy_forms_tags %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal info</title>
+
+</head>>
+<link rel="stylesheet" href="{% static 'account/css/register.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<body style="background-image:url({% static 'account/images/register4.jpg' %});">
+<div id="reg" >
+    <p style="color:white;margin-left:150px;">If you want to fill it later <a href="{% url 'home' %}" style="color:red;">click here</a></p>
+<form method="post" id="img" class="jumbotron" >
+        <h1>Personal Details</h1>
+
+    {% csrf_token %}
+    {{form|crispy}}
+    <input type="submit" value="Submit" class="btn btn-success" id="sub">
+     <br><br>
+</form>
+
+</div>
+</body>
+</html>

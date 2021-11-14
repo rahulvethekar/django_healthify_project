@@ -1,0 +1,103 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% load cart %}
+{% load currancy %}
+{% load pagination %}
+{% block title %}
+<title>Home</title>
+{% endblock %}
+{% block contents %}
+<link rel="stylesheet" href="{% static 'store/healthcare.css' %}">
+<!--E-com front end-->
+<div class="container-fluid">
+    <div class="row">
+
+<!--Filter Form and grids -->
+        <div class="col-lg-2 ">
+            <h5 class="class-header">Catagory</h5>
+            <div class="list-group">
+                <a href="{% url 'store_healthcare' %}" class="list-group-item list-group-item-action ">All</a>
+                <form method="get" class="list-group">
+    {{filter1.form}}
+    <button type="submit" class="btn btn-success mt-3">Filter</button>
+</form>
+                <div class="border rounded mt-3 p-1">
+                    <form method="get" class="list_group">
+                                <h5 class="class-header mb-1" style="text-align:center; margin-top:20px;">Search Products</h5>
+
+                    <input type="text" name="items"  style="width:218px;  " placeholder='Search here.. '>
+                    <input type="submit" value="Search" class="btn btn-info mx-auto mt-3 pb-2" style="width:218px;">
+                </form>
+                </div>
+
+            </div>
+        </div>
+
+<!--all products-->
+        <div id="product" class="col-lg-10 mx-auto">
+            <div class="row ">
+                {% for prods in page_obj %}
+<!--product in carts format                -->
+                    <div class="card mx-auto mb-3" style="width: 18rem;">
+                        <img class="card-img-top center" src="{{prods.Image.url}}" alt="Card image cap" style=" height:380px;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{prods.Name}}</h5>
+                                <p class="card-title">{{prods.Description}}</p>
+                                <p class="card-title"><b> {{prods.Price|currency}}</b></p>
+                            </div>
+            <!--custom filter -->
+                                <div class="card-footer p-0 ">
+<!--        add Product quantity and show it                -->
+                                     {% if prods|is_in_cart:request.session.cart %}
+<!--   Decrease quantity of product            -->
+                                        <div class="row no-gutters ">
+                                            <form  method="post" class="col-2">
+                                                {% csrf_token %}
+                                                <input hidden type="text" name="product" value= "{{prods.id}}" >
+                                                <input hidden type="text" name="remove"  value ='-1' >
+                                                <input type="submit" value=" - " class="btn btn-block btn-secondary form-control" >
+                                            </form>
+                                                <div class="text-center col">
+                                                    {{prods|cart_quantity:request.session.cart}} in cart
+                                                </div>
+<!--      increase quantity of product                             -->
+                                                    <form method="post" class="col-2">
+                                                        {% csrf_token %}
+                                                        <input hidden type="text"  name="product" value="{{prods.id}}" >
+                                                        <input type="submit" value=" + " class=" btn btn-block btn-secondary" >
+                                                     </form>
+                                        </div>
+<!--        Add to cart                             -->
+                                     {% else %}
+                                                        <form method="post" class="btn-block">
+                                                            {% csrf_token %}
+                                                            <input hidden type="text" name="product" value={{prods.id}}>
+                                                            <input type="submit" class="float-right btn-light border form-control"  value="Add To Cart">
+                                                        </form>
+                                                {% endif %}
+                                </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="pagination p-2 ml-2">
+<span class="steps-links">
+    {% if page_obj.has_previous %}
+    <a href="{% my_url 1 'page' request.GET.urlencode %}" class="page-link">&laquo; First</a>
+    <a href="{% my_url page_obj.previous_page_number 'page' request.GET.urlencode %}" class="page-link">Previous</a>
+    {% endif %}
+
+    <span class="current float-left page-link" style="color:black">
+        Page {{ page_obj.number }} of {{page_obj.paginator.num_pages}}.
+    </span>
+
+    {% if page_obj.has_next %}
+    <a href="{% my_url page_obj.next_page_number 'page'  request.GET.urlencode %}" class="page-link"> Next</a>
+    <a href="{% my_url page_obj.paginator.num_pages 'page'  request.GET.urlencode %}" class="page-link"> &raquo; Last</a>
+    {% endif %}
+</span>
+</div>
+{% endblock %}

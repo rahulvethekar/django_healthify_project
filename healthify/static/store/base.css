@@ -1,0 +1,44 @@
+#nav-bar {
+        list-style-type:none;
+        background-color: #009999;
+        overflow:hidden;
+        padding-top:50px;
+        padding-bottom:50px;
+        padding-left:0px;
+
+
+
+
+}
+li
+ {
+    float:left;
+    margin-left:10px;
+
+
+}
+li a
+{
+color:white;
+text-decoration:none;
+padding:15px 15px 15px 10px;
+font-size:120%;
+}
+li a:hover
+{
+color: white;
+opacity:0.3;
+}
+
+footer {
+        text-align:center;
+        background-color:grey;
+        padding:15px 15px 15px 10px;
+        padding:50px;
+
+
+}
+
+.log {
+float:right;
+}

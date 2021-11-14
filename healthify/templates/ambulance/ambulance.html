@@ -1,0 +1,32 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}
+
+    <title>Ambulance-Request</title>
+{% endblock %}
+{%  block contents %}
+<link rel="stylesheet" href="{% static 'ambulance/css/ambulance.css' %}">
+
+<body style="background-image:url({% static 'ambulance/images/ambulance.jpg' %}); background-size:100% 100%; background-attachment:fixed; background-repeat:no-repeat;">
+<div id="reg" >
+
+<form method="post" id="img" class="jumbotron" >
+        <h1>Ambulance Request</h1>
+
+    {% csrf_token %}
+    {{form|crispy}}
+    <input type="submit" value="Call Ambulance" class="btn btn-danger" id="sub" style="margin-left:350px;"><br>
+    <h2 style="margin-left:10px; color:red;">Emergency Instructions :-</h2>
+    <font>1.)Stay on line with 911 and follow emergency instructions.</font><br>
+    <font>2.)Stay calm and try to keep the patient calm.</font><br>
+    <font>3.)Don't move a patient who was injured in an automobile accident or fall,or who was found unconsious.</font><br>
+    <font>4.)If the patient cold,cover them with a blanket.</font><br>
+    <font>5.)Don't give an injured person anything to eat or drink(unless instructed by the 911 dispatcher).</font><br>
+    <font>6.)Have someone watch for the ambulance and show the crew how to get the patient.</font><br.
+
+
+</form>
+</div>
+</body>
+{% endblock %}

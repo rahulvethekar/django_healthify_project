@@ -1,0 +1,37 @@
+{% extends 'admin/admin.html' %}
+{% load static %}
+{% block title %}
+    <title>Appointment_Request</title>
+
+{% endblock %}
+
+{% block contents %}
+  <link rel="stylesheet" href="{% static 'appointment/css/appointment.css' %}">
+<body style="background-image:url({% static 'ambulance/images/request.png' %});">
+
+{% for req in data %}
+<div class="tab">
+<h4>Patient Id :- {{req.id}}</h4><br>
+    <h6>Patient Name:- {{req.Patient_Name}}</h6>
+<h6>Patient Age :- {{req.Age}}</h6>
+<h6>Patient Blood Group :- {{req.Blood_Group}}</h6>
+<h6>Mobile No :- {{req.Mobile_No}}</h6>
+<h6>Address :- {{req.Address}}</h6>
+    <h6>Appointment Date :- {{req.Appointment_Date}}</h6>
+<h6>Appointment Time :- {{req.Appointment_Time}}</h6>
+<h6>Disease :- {{req.Disease}}</h6>
+    {% if req.Vaccinated %}
+<h6>Do You Vaccinated :- Yes</h6>
+    {% else %}
+   <h6>Do You Vaccinated :- No</h6>
+    {% endif %}
+
+
+
+<!--    <a href="{% url 'delete_req' req.id %}"><button class = "btn btn-danger" style="width:100px; height:40px;">Delete</button></a>-->
+    </div>
+
+<br><br>
+{% endfor %}
+</body>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'home/base.html'  %}
+{% load static %}
+{% block title %}
+    <title>Login</title>
+{% endblock %}
+{% block contents %}
+<link rel="stylesheet" href="{% static 'account/css/login.css' %}">
+
+<body style="background-image:url({% static 'account/images/register4.jpg' %});">
+<div id="reg" >
+
+<form method="post" class="jumbotron" id="img" class="border rounded">
+    <h1 class="text-center">Login</h1>
+    <hr>
+    {% csrf_token %}
+
+<label class="form-label">Enter Username </label>
+<input type="text" name="uname" class="form-control"><br><br>
+<label class="form-label">Enter Password</label>
+<input type="password" name="pwd" class="form-control"><br><br>
+<input type="submit" value="Login" class="btn btn-success" id="sub"><br><br>
+    {% for msg in messages %}
+    <p id="p">{{msg}}</p>
+    {% endfor %}
+
+    <font style=" margin-left:100px;">If not Sign-Up ?</font>
+    <a href="{% url 'register' %}" style="color:blue;">   Sign-Up</a><br>
+    <a href="{% url 'resetpass' %}" style="color:blue; margin-left:120px;">Forgot Password ?</a><br>
+    <a href="{% url 'changepassword'  %}" style="color:blue; margin-left:120px;">Change Password ?</a>
+    <a class="nav-link" href="{% url 'social:begin' 'google-oauth2' %}" style="margin-left:100px; color:blue;">
+           Login with Google <img src="{% static 'account/images/google.jpg' %}"  alt="no image found! " style="height:25px;width:40px;">
+          </a>
+
+
+</form>
+</div>
+</body>
+<br><br><br>
+
+{% endblock %}

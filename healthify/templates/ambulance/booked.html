@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booked</title>
+    <link rel="stylesheet" href="{% static 'ambulance/css/ambulance.css' %}">
+
+</head>
+<body style="background-image:url({% static 'ambulance/images/ambulance1.jpg' %});background-size:100% 100%; background-attachment:fixed;">
+<div class="shadow-sm p-3 mb-5 bg-white rounded">
+
+<div id="booked" class="border-top-0">
+    <h1>Your Ambulance request successfully register with us. keep patience Next in few minutes ambulance will be on the way. Thank You! <a href="{% url 'home' %}">Home page</a></h1>
+</div>
+</div>
+</body>
+</html>

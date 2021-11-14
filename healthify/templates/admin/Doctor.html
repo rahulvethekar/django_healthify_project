@@ -1,0 +1,22 @@
+{% extends 'admin/admin.html' %}
+{% load static %}
+{% block title %}
+{% load crispy_forms_tags %}
+    <title>Doctor</title>
+
+{% endblock %}
+{% block contents %}
+<link rel="stylesheet" href="{% static 'admin/css/doctor.css' %}">
+
+<!--<body style="background-image:url({% static 'admin/images/admin2.jpg' %}) ; background-size:100% 100%; background-attachment:fixed;">-->
+<div class="container mx-auto w-2" id="doc">
+
+<form method="post" class="border rounded ">
+    <h1 class="header m-2 p-2"  style="text-align:center;">Add Doctors here</h1>
+    <hr>
+    {% csrf_token %}
+    {{form|crispy }}
+    <input type="submit" value="Add Doctors" class="btn btn-outline-info text-center col-2 mb-4"  style="margin-left:300px;" >
+</form>
+</div>
+{% endblock %}

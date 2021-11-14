@@ -1,0 +1,158 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}
+
+    <title>Appointment|form</title>
+{% endblock %}
+{%  block contents %}
+<link rel="stylesheet" href="{% static 'account/css/appointment.css' %}">
+<body style="background-image:url({% static 'appointment/images/appoint1.jpg' %}); background-size:100% 100%;background-attachment:fixed;background-repeat:no-repeat;">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<div class="container border rounded w-50 mt-4 mb-4" id="appoint">
+<form method="post" class="p-5">
+  <small style="font-size:50px; margin-left:70px; text-align:center;" class="header p-2 text-center">Appointment form</small><br><i class="bi bi-pencil-square"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+</svg></i>
+    <hr>
+    {% csrf_token %}
+  <div class="mb-3">
+      {% for msg in messages %}
+         <p class="alert alert-danger">{{msg}}</p>
+         {% endfor %}
+    <label  class="form-label">User Id</label>
+    <input type="text" class="form-control"  name = 'userid' value={{user.id}} required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">First Name</label>
+    <input type="text" class="form-control"  name="fname" value= {{user.first_name}} required>
+  </div>
+   <div class="mb-3">
+    <label class="form-label">Last Name</label>
+    <input type="text" class="form-control" name="lname" value= {{user.last_name}} required>
+  </div>
+
+   <div class="mb-3">
+    <label class="form-label">Gender</label>
+    <input type="text" class="form-control"  name="gender" value= {{data.Gender}} required>
+  </div>
+
+     <div class="mb-3">
+    <label class="form-label">Age</label>
+    <input type="text" class="form-control"  name="age" value= {{data.Age}} required>
+  </div>
+
+     <div class="mb-3">
+    <label class="form-label">Email Id</label>
+    <input type="text" class="form-control"  name="email" value= {{user.email}} required>
+  </div>
+
+     <div class="mb-3">
+    <label class="form-label">Contact No</label>
+    <input type="text" class="form-control"  name="mobile" value= {{data.Mobile_No}} required>
+  </div>
+
+     <div class="mb-3">
+    <label class="form-label">Address</label>
+    <input type="text" class="form-control"  name="address" value= {{data.Address}} required>
+  </div>
+
+     <div class="mb-3">
+    <label class="form-label">Pincode</label>
+    <input type="text" class="form-control" name="pincode" value= {{data.Pincode}} required>
+  </div>
+
+    <div class="mb-3">
+    <label class="form-label">Blood Group</label>
+    <input type="text" class="form-control" name="blood_group" value= {{data.Blood_Group}} required>
+  </div>
+    <div class="mb-3">
+        <label class="form-label">Select Appointment Date</label>
+        <input  type="text" class="form-control" name="date" value={{date}} required>
+    </div>
+
+
+
+    <label class="form-label">Select Appointment Time </label><br>
+        {% if slotA < 1 %}
+                <font class="badge badge-danger">Available Slot 9AM to 12PM :{{slotA}}</font>
+        {% elif slotA == 1 %}
+                <font class="badge badge-warning">Available Slot 9AM to 12PM :{{slotA}}</font>
+        {% else %}
+                <font class="badge badge-success">Available Slot 9AM to 12PM :{{slotA}}</font>
+        {% endif %}
+
+         {% if slotB < 1 %}
+        <font class="badge badge-danger">Available Slot 12AM to 2PM :{{slotB}}</font>
+        {% elif slotB == 1 %}
+                <font class="badge badge-warning">Available Slot 12AM to 2PM :{{slotB}}</font>
+        {% else %}
+         <font class="badge badge-success">Available Slot 12AM to 2PM :{{slotB}}</font>
+        {% endif %}
+
+         {% if slotC < 1 %}
+        <font class="badge badge-danger">Available Slot 4AM to 6PM :{{slotC}}</font>
+        {% elif slotC == 1 %}
+                <font class="badge badge-warning">Available Slot 4AM to 6PM :{{slotC}}</font>
+        {% else %}
+         <font class="badge badge-success">Available Slot 4AM to 6PM :{{slotC}}</font>
+        {% endif %}
+
+         {% if slotD < 1 %}
+        <font class="badge badge-danger">Available Slot 6AM to 8PM :{{slotD}}</font>
+        {% elif slotD == 1 %}
+                <font class="badge badge-warning">Available Slot 6AM to 8PM :{{slotD}}</font>
+        {% else %}
+         <font class="badge badge-success">Available Slot 6AM to 8PM :{{slotD}}</font>
+        {% endif %}
+        <br><br>
+    <select name = 'time' class="form-control">
+        <option>----------</option>
+        {% if a < 2 %}
+        <option class="text-success">9AM to 12PM </option>
+
+        {% endif %}
+        {% if b < 2 %}
+        <option class="text-success">12PM to 2PM</option>
+                {% endif %}
+        {% if e < 2 %}
+        <option class="text-success">4PM to 6PM</option>
+                {% endif %}
+
+        {% if d < 2 %}
+        <option class="text-success">6PM to 8PM</option>
+                {% endif %}
+            {%  if all >= 8 %}
+        <option style="color:red;">all Slot booked</option>
+        {% endif %}
+    </select>
+
+
+     <div class="mb-3">
+    <label class="form-label">Disease</label>
+    <input type="text" class="form-control" name="disease" required>
+  </div>
+
+
+    <div class="mb-3 ">
+    <label class="form-label">Do you Vaccinated ?</label>
+          <input type="checkbox" class="form-check-input" name="vaccine" value="Yes" style="margin-left:10px;">
+
+  </div>
+
+  <input type="submit" class="btn btn-primary">
+</form>
+         <div class="mb-3">
+
+
+</div>
+     </div>
+
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+</body>
+{% endblock %}

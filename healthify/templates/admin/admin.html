@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  {% block title %}
+    <title>admin</title>
+  {% endblock %}
+  <link rel="stylesheet" href="{% static 'admin/css/admin.css' %}">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+</head>
+<body>
+
+<!-- Example split danger button -->
+<div id="adm">
+
+  <a href="{% url 'admin' %}"> <h3>Admin</h3></a>
+<div class="btn-group" >
+  <button type="button" class="btn btn-success">Doctor</button>
+  <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="{% url 'doctor' %}">Add Doctor</a>
+    <a class="dropdown-item" href="{% url 'doctor_list' %}">Doctor's list</a>
+  </div>
+</div>
+<!--second-->
+
+<!-- Example split danger button -->
+<div class="btn-group">
+  <button type="button" class="btn btn-success">Nurse</button>
+  <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="{% url 'nurse' %}">Add Nurse's</a>
+    <a class="dropdown-item" href="{% url 'nurse_list' %}">Nurse List</a>
+  </div>
+</div>
+<!--third-->
+
+<!-- Example split danger button -->
+<div class="btn-group">
+  <button type="button" class="btn btn-success">Room Services</button>
+  <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Separated link</a>
+  </div>
+</div>
+<!--fourth-->
+
+<!-- Example split danger button -->
+<div class="btn-group" >
+  <a href="{%  url 'request' %}" > <button type="button" class="btn btn-primary"  style="height:70px; width:200px;">Ambulance Request</button></a>
+</div>
+<!--five-->
+<div class="btn-group">
+  <a href="{% url 'appoint_requests' %}" > <button type="button" class="btn btn-primary"  style="height:70px; width:200px;">Appointment Request</button></a>
+</div>
+    <a href="{% url 'registerUsers' %}" > <button type="button" class="btn btn-light"  style="height:70px; width:200px; background-color:cyan;">Registered Users</button></a>
+
+</div>
+<a href="{% url 'home' %}" class="btn btn primary" style="background-color:pink;">Go to Home</a>
+{% block contents %}
+code here..
+{% endblock %}
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+</body>
+</html>

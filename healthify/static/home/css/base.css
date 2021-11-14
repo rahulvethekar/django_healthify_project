@@ -1,0 +1,61 @@
+#nav {
+        list-style-type:none;
+        background-color:#ffcccc;
+        overflow:hidden;
+        padding-top:50px;
+        padding-bottom:35px;
+        padding-left:0px;
+
+
+
+
+}
+li
+ {
+    float:left;
+    margin-top:15px;
+
+}
+li a
+{
+color:green;
+text-decoration:none;
+padding:15px 15px 15px 10px;
+font-size:130%;
+}
+li a:hover
+{
+color:red;
+}
+
+footer {
+        text-align:center;
+        background-color:pink;
+        padding:15px 15px 15px 10px;
+        opacity:0.8;
+
+}
+
+ h5 {
+float:left;
+color:blue;
+margin-bottom:20px;
+font-size:20px;
+
+}
+
+
+ul  img {
+float:left;
+width:5%;
+margin-bottom:20px;
+margin-right:10px;
+margin-left:10px;
+padding-left:0px;
+
+}
+
+ul li i{
+float:right;
+
+}

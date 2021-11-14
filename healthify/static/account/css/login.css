@@ -1,0 +1,24 @@
+#reg {
+width:500px;
+margin-left:490px;
+height:590px;
+opacity:0.9;
+margin-top:80px;
+
+}
+#img {
+background-color:#ccff33;
+
+}
+#sub{
+margin-left:150px;
+}
+
+#p {
+margin-left:120px;
+color:red;
+}
+h1{
+text-align:center;
+font-family:arial;
+}

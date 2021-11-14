@@ -1,0 +1,39 @@
+#reg {
+width:1000px;
+margin-left:290px;
+height:910px;
+opacity:0.9;
+
+}
+#sub {
+margin-left:190px;
+}
+#img {
+background-color:  #f2f2f2;
+
+}
+form a {
+margin-left:170px;
+}
+h1{
+text-align:center;
+color:darkgreen;
+}
+
+.tab {
+color:black;
+background-color:#4cabc7;
+opacity:0.8;
+}
+
+#booked {
+background-color:#cbeacb;
+opacity:0.8;
+color:#00cc66;
+padding:0px;
+}
+div h1{
+color:darkgreen;
+
+
+}

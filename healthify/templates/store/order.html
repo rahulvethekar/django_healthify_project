@@ -1,0 +1,67 @@
+{% extends 'store/base.html' %}
+<!--custom filter for cart-->
+{% load cart %}
+<!--custom filter for order-->
+{% load order %}
+<!--custom filter for currency-->
+{% load currancy %}
+{% block title %}
+<title>Cart</title>
+{% endblock %}
+{% block contents %}
+<div class="container">
+    <div class=" border rounded p-4 m-4">
+        <p class="display-4 pl-1 m-4"> Your Orders</p>
+        <hr>
+        <table class="table">
+            <tr>
+                <th>Sr.No</th>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Date</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Delivery Status</th>
+                <th>Payment Status</th>
+            </tr>
+<!--table body by using custom filter-->
+                <tbody>
+                    {% for order in orders %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td><img class="rounded-circle" style="height:90px;" src="{{order.Product.Image.url}}" alt=" no image found"></td>
+                            <td>{{order.Product.Name}}</td>
+                            <td>{{order.date}}</td>
+                            <td> {{order.Price|currency}}</td>
+                            <td>{{order.Quantity}}</td>
+                            <td> {{order.Quantity|multiply:order.Price|currency}}</td>
+                            {% if order.Status %}
+                                <td><small class="badge badge-success">Delivered</small></td>
+                            {% else %}
+                            <td><small class="badge badge-warning">Arriving</small></td>
+                            {% endif %}
+                            {% if order.payment_status == 'True' %}
+                            <td><small class="badge badge-success">Paid</small></td>
+                            {% else %}
+                            <td><small class="badge badge-warning">Pending</small><small class="badge badge-danger p-1 pt-2 pb-2 m-2"><a href="{% url 'payment' %}" class="text-white">Do Pending Payment</a></small></td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+<!-- Table footer using custom filter   -->
+                    <tfoot>
+                        <tr>
+                            <th colspan="5"></th>
+                            <th>Total</th>
+                            <th> {{ orders|total|currency }}</th>
+                        </tr>
+                    </tfoot>
+        </table>
+    </div>
+</div>
+
+<br><br><br>
+
+
+{% endblock %}
